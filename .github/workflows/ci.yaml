@@ -18,3 +18,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Build Docker image
+      run: |
+        docker build -t asmanjan/nodejs-image:latest .
+      - name: Log in to Docker Hub
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Push Docker image to Docker Hub in registry    
