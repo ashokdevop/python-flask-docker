@@ -1,9 +1,10 @@
-name: Flask Application Testing
+name: CI/CD Pipeline testing Github actions
+
 on:
-  workflow_dispatch:
-  pull_request:
+  push:
     branches:
-    - master
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
